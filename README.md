@@ -52,7 +52,6 @@ These zero values were retained because they provide meaningful information abou
 
 # Exploratory Data Analysis
 
- <img width="740" height="525" alt="image" src="https://github.com/user-attachments/assets/f9e4c98f-9060-4d69-9fc5-e7800d3c8d34" />
 
 Figure 1: Distribution of Voter Movement (MOVED_A)
 Figure 1 presents the distribution of the MOVED_A variable in the voter persuasion dataset. The variable indicates whether a voter changed their attitude after exposure to a campaign message.
@@ -129,4 +128,99 @@ The results show that commuting by car is the dominant transportation method for
 For commute duration, neighborhoods where commuting times are less than 10 minutes show median values around 8–10%, while 60–90+ minute commute percentages are generally lower, around 5–7% for both groups. Persuaded voters show slightly higher long-commute percentages overall.
 Several outliers are visible across the plots. Public transit percentages exceed 10–15% in some neighborhoods, walking percentages rise above 30%, and carpooling percentages exceed 20–30% in a few cases. These outliers were retained because they represent real neighborhood transportation differences rather than data errors.
 Overall, the results suggest that neighborhood commuting behavior may have a moderate relationship with persuasion outcomes, although the differences between moved and non-moved voters are not extremely large.
+
+# Predictor analysis and variable relevance
+Predictor relevance was assessed by examining how strongly different groups of variables were associated with changes in voter attitudes. Variables were evaluated based on whether they showed strong, moderate, or weak relationships with voter movement rather than treating all predictors equally. 
+Political background variables appeared to be the most important predictors because they showed the strongest relationships with persuasion outcomes. Variables related to party affiliation, household political composition, and prior voting behavior consistently showed higher associations with voter attitude change. This suggests that politically engaged voters are more responsive to campaign messaging and therefore more important for targeting strategies.
+Household and demographic characteristics showed moderate relationships with persuasion behavior. These variables may provide useful supporting context but were generally less influential than direct political indicators.
+Lifestyle and consumer interest variables showed relatively weak relationships with voter movement, suggesting that these variables may have limited value for persuasion-focused targeting decisions.
+From a business perspective, these findings help support more efficient campaign outreach. Instead of relying heavily on broad lifestyle or consumer traits, the campaign can focus more on politically relevant variables when identifying persuadable voters. This can help reduce wasted outreach efforts and improve overall targeting efficiency.
+
+# Dimension reduction 
+The dataset contains many numeric variables related to political behavior, demographics, household information, and neighborhood characteristics. Correlation analysis showed that several predictors are related to one another, indicating some redundancy across variables. When many similar variables are included together, they can increase complexity and make interpretation more difficult.
+To better understand the structure of the dataset, Principal Component Analysis (PCA) was explored after standardizing the numeric variables so that all predictors contributed equally to the analysis.
+The PCA results showed that the information in the dataset is spread across multiple components rather than concentrated in a single factor. The first principal component explained approximately 15.7% of the total variance. About 74% of the variance was explained by the first 20 components, while around 85% was captured by the first 30 components.
+These results suggest that the dataset contains information from many different underlying patterns rather than only a few dominant factors. At this stage, PCA was used mainly for exploratory purposes to evaluate redundancy and dataset complexity, rather than as a final feature reduction method for modeling.
+
+# Data Engineering and Transformation
+The dataset was cleaned and transformed before model development to improve data quality and prepare the variables for classification analysis. Identifier variables such as X and VOTER_ID were removed because they only label records and do not provide useful predictive information. Variables that could create redundancy or data leakage, such as MOVED_AD, MESSAGE_A_REV, and opposite, were also removed to avoid misleading model results.
+In addition, several low-value and redundant variables related to demographics, transportation, neighborhood composition, and consumer interests were removed after exploratory analysis and correlation review showed limited usefulness for predicting persuasion outcomes.
+The target variable, MOVED_A, was treated as a categorical variable so the problem could be modeled as a binary classification task representing whether a voter was persuaded or not.
+Several feature transformations were also performed during preprocessing. A new variable called HAS_KIDS was created from the KIDS variable to indicate whether a voter has children in the household. Text-based variables such as I3, CAND1_UND, and CAND2_UND were converted into binary indicator variables where Y = 1 and N = 0. Candidate support variables CAND1S and CAND2S were converted into dummy variables so they could be used correctly in the models.
+The dataset was then divided into training and testing sets using a stratified 70/30 split to preserve the distribution of the target variable across both datasets. Numeric predictors were standardized using the training dataset, and the same scaling parameters were later applied to the test dataset. This ensured that all variables were measured on a similar scale and helped maintain fair model evaluation while preventing information leakage.
+
+# Data Partitioning method
+The dataset was divided into training and testing datasets to evaluate model performance on unseen data. A stratified 70%–30% train–test split was applied based on the outcome variable MOVED_A. Stratified sampling was used to ensure that both datasets contained similar proportions of persuaded and non-persuaded voters.
+Approximately 70% of the observations were assigned to the training dataset for model development, while the remaining 30% were reserved for testing and performance evaluation. The training dataset was used to build and train the classification models, and the testing dataset was used to evaluate how well the models generalized to new voters not previously seen during training.
+This partitioning approach helps provide a fair and reliable assessment of predictive performance while reducing the risk of overfitting. It also supports more realistic campaign targeting decisions by evaluating how the models may perform on future voter data.
+Model Selection and Justification
+Since the outcome variable MOVED_A is binary, representing whether a voter was persuaded or not persuaded, classification models were selected for this analysis. Logistic Regression, Decision Tree, and k-Nearest Neighbors (kNN) were chosen because they are well-suited for binary classification problems and can handle multiple predictor variables.
+Each model provides different analytical advantages. Logistic Regression was selected because it produces probability-based predictions and offers relatively easy interpretation of predictor effects. Decision Trees were included because they provide rule-based decision structures that are simple to interpret and useful for campaign targeting strategies. kNN was selected because it can identify similarity patterns among voters and capture more complex relationships between predictors and persuasion outcomes.
+Using multiple models also allows comparison of different modeling approaches rather than relying on a single technique. Model performance was evaluated using measures such as accuracy, sensitivity, specificity, and ROC–AUC to assess both predictive ability and classification quality.
+This approach helps balance predictive performance with interpretability and supports selecting the model that best fits the campaign’s voter targeting objectives.
+
+# Model Fitting, Validation Accuracy, and Test Accuracy
+Logistic Regression, Decision Tree, and k-Nearest Neighbors (kNN) models were fitted to predict whether a voter was persuaded after receiving a campaign message. Since the outcome variable MOVED_A is binary, classification models were appropriate for this analysis.
+The dataset was divided using a stratified 70–30 train-test split to maintain similar proportions of persuaded and non-persuaded voters in both datasets. All models were trained only on the training dataset, while the testing dataset was kept separate for final evaluation to prevent information leakage.
+For Logistic Regression and the Decision Tree, models were trained directly on the training dataset and evaluated on the testing dataset using classification performance measures. For kNN, the optimal value of k was selected using 10-fold cross-validation on the training data before final testing. Cross-validation helped identify the best neighborhood size while reducing the risk of overfitting.
+Model performance was evaluated using accuracy, sensitivity, specificity, and ROC–AUC. These measures helped assess both overall predictive performance and the ability of the models to correctly identify persuaded voters.
+The validation and testing results were generally consistent across the models, suggesting that the models were properly trained and generalized reasonably well to unseen voter data. Overall, the models were appropriately fitted, validated, and tested, allowing reliable comparison of different approaches for campaign targeting analysis.
+# Reporting Model Performance
+Model performance was evaluated using multiple classification metrics rather than relying only on accuracy. Since the campaign’s goal is to identify persuadable voters while minimizing wasted outreach, measures such as sensitivity, specificity, and ROC–AUC were important for assessing model quality.
+As shown in Figure 13, the Logistic Regression model achieved a test accuracy of approximately 78.8%, meaning the model correctly classified most voters in the testing dataset. The model achieved a sensitivity of 70.1%, indicating that it correctly identified about 70% of persuaded voters (MOVED_A = 1). The specificity was 84.0%, showing that the model performed better at correctly identifying voters who were unlikely to change their opinions.
+The ROC–AUC value for Logistic Regression was approximately 0.850, suggesting strong overall classification performance and good ability to distinguish between persuaded and non-persuaded voters.
+The confusion matrix also showed that the model correctly classified:
+•	1,585 non-persuaded voters
+•	780 persuaded voters
+while incorrectly classifying:
+•	333 persuaded voters as non-persuaded
+•	302 non-persuaded voters as persuaded
+Overall, the Logistic Regression model demonstrated reliable predictive performance and provided a good balance between identifying persuadable voters and avoiding unnecessary campaign outreach.
+ 
+
+Figure 13: Confusion Matrix and ROC curve for Logistic Regression
+Figure 14 shows the final Decision Tree model and its classification performance on the testing dataset.
+The Decision Tree achieved a test accuracy of approximately 83.4%, which was higher than the Logistic Regression model. The model also achieved a sensitivity of 79.7%, meaning it correctly identified nearly 80% of persuaded voters (MOVED_A = 1). The specificity was 85.6%, indicating strong performance in identifying voters who were unlikely to change their opinions.
+The ROC–AUC value for the Decision Tree model was approximately 0.833, suggesting good overall discrimination between persuaded and non-persuaded voters.
+The confusion matrix showed that the model correctly classified:
+•	1,616 non-persuaded voters
+•	887 persuaded voters
+while incorrectly classifying:
+•	226 persuaded voters as non-persuaded
+•	271 non-persuaded voters as persuaded
+The decision tree visualization also shows how the model used principal component splits (PC1 and PC2) to separate voters into different persuasion groups. Overall, the Decision Tree provided strong predictive performance while also offering interpretable rule-based classification useful for campaign targeting decisions.
+  
+
+Figure 14: Decision tree and Confusion Matrix of Decision Tree
+
+Figure 15 presents the performance of the k-Nearest Neighbors (kNN) model on the testing dataset, along with its ROC curve.
+Among the three classification models, the kNN model achieved the strongest overall performance. The test accuracy reached approximately 85.7%, which was the highest accuracy obtained in the analysis. The model achieved a sensitivity of 80.5%, meaning it correctly identified over 80% of persuaded voters (MOVED_A = 1). The specificity was 88.7%, indicating very strong performance in correctly identifying voters who were unlikely to change their opinions.
+The ROC–AUC value for the kNN model was approximately 0.929, suggesting excellent discrimination ability between persuaded and non-persuaded voters. The ROC curve also shows strong separation from the diagonal reference line, confirming high predictive quality.
+The confusion matrix showed that the model correctly classified:
+•	1,674 non-persuaded voters
+•	896 persuaded voters
+while incorrectly classifying:
+•	217 persuaded voters as non-persuaded
+•	213 non-persuaded voters as persuaded
+Overall, the kNN model provided the best balance between identifying persuadable voters and minimizing unnecessary outreach, making it the strongest model for campaign targeting decisions in this analysis.
+
+  
+
+Figure 15: ROC curve and Confusion matrix for KNN
+Comparing the three models shows that all models performed reasonably well in predicting voter persuasion outcomes. However, the k-Nearest Neighbors (kNN) model consistently achieved the strongest overall performance across all evaluation measures. It produced the highest test accuracy (85.7%), sensitivity (80.5%), specificity (88.7%), and ROC–AUC (0.929).
+These results indicate that the kNN model was the most effective at correctly identifying both persuadable and non-persuadable voters. In particular, its higher sensitivity means it was better at identifying voters likely to be influenced by campaign messaging, while its strong specificity helped reduce unnecessary outreach toward voters unlikely to change their opinions.
+Overall, the comparison suggests that the kNN model provides the best predictive performance and is the most suitable approach for supporting efficient and data-driven campaign targeting decisions.
+
+# Model Evaluation 
+Logistic Regression, Decision Tree, and k-Nearest Neighbors (kNN) models were evaluated to determine how effectively they support the campaign’s goal of identifying persuadable voters while minimizing wasted outreach. Multiple performance measures, including accuracy, sensitivity, specificity, and ROC–AUC, were used to provide a comprehensive evaluation of model quality.
+The Logistic Regression model achieved a test accuracy of 78.8%, sensitivity of 70.1% , specific84.0%, and ROC–AUC of 0.850. The model performed reasonably well and provided strong interpretability because it produces probability-based predictions that help explain how voter characteristics relate to persuasion outcomes. However, its lower sensitivity indicates that some persuadable voters were not correctly identified.
+The Decision Tree model improved predictive performance, achieving an accuracy of 83.4%, sensitivity of 79.7%, specificity of 85.6%, and ROC–AUC of 0.833. In addition to stronger classification performance, the model provided clear rule-based decision paths that are easy for campaign staff to interpret and apply in practice.
+The k-Nearest Neighbors (kNN) model achieved the strongest overall performance across all evaluation measures. The model produced an accuracy of 85.7%, sensitivity of 80.5%, specificity of 88.7%, and ROC–AUC of 0.929. These results indicate that kNN was the most effective model for identifying persuadable voters while also minimizing unnecessary outreach toward voters unlikely to change their opinions.
+Overall, the results demonstrate a trade-off between interpretability and predictive performance. Logistic Regression provided stronger interpretability, Decision Trees offered understandable rule-based logic, and kNN delivered the strongest predictive accuracy. Since the campaign’s primary objective is efficient voter targeting, the kNN model provided the best overall fit for the campaign’s analytical goals.
+
+# Observations and Conclusion
+The analysis showed that political engagement, voting history, household political composition, and campaign messaging were more useful for predicting voter persuasion than many demographic or consumer-interest variables. These findings suggest that voter behavior is influenced more by political context and prior participation than by broad lifestyle characteristics.
+All three classification models performed reasonably well, but k-Nearest Neighbors (kNN) achieved the strongest overall predictive performance on the testing dataset. Logistic Regression and Decision Trees provided easier interpretation, while kNN produced better overall classification results.
+The project demonstrates how analytics and machine learning can support more informed political campaign decision-making. Overall, the analysis highlights the value of data-driven methods for understanding voter behavior and improving campaign strategy.
+
 
