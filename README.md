@@ -62,7 +62,7 @@ The chart shows that approximately 6,300 voters were not persuaded (MOVED_A = 0)
 The distribution suggests a moderate class imbalance, where non-moved voters appear more frequently than moved voters. This is important because imbalance can influence classification model performance and should be considered during later modeling stages.
 
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%202.png" alt="Exploratory data analysis" width="740">
   <br>
   <em>Figure 2.  Age by Voter Movement</em>
 </p>
@@ -72,7 +72,7 @@ The median age for both groups is around 50 years old, indicating that middle-ag
 The boxplot suggests that age alone may not strongly distinguish between voters who were persuaded and those who were not. However, the group of moved voters (MOVED_A = 1) shows slightly greater variation in age distribution, indicating that persuasion responses may occur across a wider age range.
 
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%203.png" alt="Exploratory data analysis" width="740">
   <br>
   <em>Figure 3: Income by Voter Movement</em>
 </p>
@@ -81,7 +81,7 @@ Most voters in both groups are concentrated around the $50,000–$90,000 income 
 The chart also shows high-income outliers in both groups. For MOVED_A = 0, there are outliers around $175,000–$200,000. For MOVED_A = 1, there is an outlier around $175,000. These outliers represent voters from much higher-income neighborhoods compared to the majority of the dataset. They were kept because they appear to be real values, not missing data or errors.
 
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%204.png" alt="Exploratory data analysis" width="740">
   <br>
   <em>Figure 4: Party Registration Distribution</em>
 </p>
@@ -92,7 +92,7 @@ The dataset contains the largest number of Democratic voters, with approximately
 The chart suggests that the dataset is politically diverse but somewhat dominated by Democratic voters. This is important because party affiliation was identified as one of the strongest predictors of voter movement and persuasion behavior. Differences in party registration may influence how voters respond to campaign messages and political outreach strategies.
 
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%205.png" alt="Exploratory data analysis" width="740">
   <br>
   <em>Figure 5: Voting in 2012 vs Persuasion</em>
 </p>
@@ -102,7 +102,7 @@ Among voters who did not vote in 2012 (VPR_12 = 0), a larger proportion remained
 The chart suggests that prior voting participation may be related to persuasion behavior. Politically active voters appear more likely to respond to campaign messaging compared to voters with lower political participation. This supports earlier findings that political engagement variables are important predictors for understanding voter persuasion.
 
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%206.png" alt="Exploratory data analysis" width="740">
   <br>
   <em>Figure 6. Average Upscale Buying Score by Persuasion</em>
 </p>
@@ -113,7 +113,7 @@ The chart shows that voters who moved after the message have a slightly higher a
 This finding suggests that consumer lifestyle variables, such as upscale purchasing behavior, may provide only limited value for predicting voter movement when compared to stronger political and voting-related predictors.
 
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%207.png" alt="Exploratory data analysis" width="740">
   <br>
   <em>Figure 7. Effect of Message A on Voter Movement</em>
 </p>
@@ -125,7 +125,7 @@ Among voters who did not receive Message A (MESSAGE_A = 0), a larger number rema
 This pattern suggests that Message A may have had a positive influence on voter persuasion. Voters exposed to the message appear more likely to change their attitudes compared to those who did not receive it. The results indicate that campaign messaging strategies can play an important role in influencing voter behavior and may be useful predictors in later classification modeling.
 
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%208.png" alt="Exploratory data analysis" width="740">
   <br>
   <em>Figure 8. Gender (Female) vs Persuasion</em>
 </p>
@@ -136,7 +136,7 @@ Among non-female voters (GENDER_F = 0), approximately 70% remained unchanged aft
 These results suggest that female voters may be slightly more responsive to campaign messaging compared to non-female voters. Although the difference is moderate, gender appears to provide some useful information for understanding persuasion behavior.
 
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%209.png" alt="Exploratory data analysis" width="740">
   <br>
   <em>Figure 9. Parents vs Persuasion</em>
 </p>
@@ -147,7 +147,9 @@ Voters without children (Has Kids = 0) make up the larger share of persuaded vot
 These results suggest that voters without children may have been somewhat more responsive to campaign messages than voters with children. However, the difference is moderate, indicating that household structure may provide supporting information but is likely less important than direct political or voting-related predictors.
   
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure10-1.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%2010-2.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%2010-3.png" alt="Exploratory data analysis" width="740">
   <br>
   <em>Figure 10. Household Political Composition vs Persuasion</em>
 </p>
@@ -161,7 +163,8 @@ Overall, the figure suggests that household political background may influence p
 
   
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%2011.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%2011-1.png" alt="Exploratory data analysis" width="740">
   <br>
   <em> Figure 11. Neighborhood Demographic Composition vs Persuasion</em>
 </p>
@@ -173,7 +176,7 @@ Hispanic, Asian, and Multiracial percentages are generally low for both groups. 
 Overall, the data suggests that neighborhood demographic differences exist, but they are moderate rather than very large.
   
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%2012.png" alt="Exploratory data analysis" width="740">
   <br>
   <em> Figure 12. Neighborhood Commuting Patterns vs Persuasion</em>
 </p>
@@ -236,7 +239,7 @@ while incorrectly classifying:
 Overall, the Logistic Regression model demonstrated reliable predictive performance and provided a good balance between identifying persuadable voters and avoiding unnecessary campaign outreach.
  
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%2013.png" alt="Exploratory data analysis" width="740">
   <br>
   <em> Figure 13: Confusion Matrix and ROC curve for Logistic Regression</em>
 </p>
@@ -253,7 +256,7 @@ while incorrectly classifying:
 The decision tree visualization also shows how the model used principal component splits (PC1 and PC2) to separate voters into different persuasion groups. Overall, the Decision Tree provided strong predictive performance while also offering interpretable rule-based classification useful for campaign targeting decisions.
   
 <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%2014.png" alt="Exploratory data analysis" width="740">
   <br>
   <em> Figure 14: Decision tree and Confusion Matrix of Decision Tree</em>
 </p>
@@ -272,7 +275,7 @@ while incorrectly classifying:
 Overall, the kNN model provided the best balance between identifying persuadable voters and minimizing unnecessary outreach, making it the strongest model for campaign targeting decisions in this analysis.
 
  <p align="center">
-  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <img src="image/figure%2015.png" alt="Exploratory data analysis" width="740">
   <br>
   <em> Figure 15: ROC curve and Confusion matrix for KNN</em>
 </p> 
