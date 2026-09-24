@@ -51,62 +51,107 @@ Several variables naturally contain zero values. For example, variables such as 
 These zero values were retained because they provide meaningful information about voter and community characteristics. Removing them could distort the data and lead to inaccurate conclusions in later analysis.
 
 # Exploratory Data Analysis
-
-
-![Figure 1: Exploratory Data Analysis](image/figure%201.png)
-
-*Figure 1: Distribution of Voter Movement (MOVED_A)*
+<p align="center">
+  <img src="image/figure%201.png" alt="Distribution of Voter Movement" width="740">
+  <br>
+  <em>Figure 1. Distribution of voter movement (MOVED_A)</em>
+</p>
 
 Figure 1 presents the distribution of the MOVED_A variable in the voter persuasion dataset. The variable indicates whether a voter changed their attitude after exposure to a campaign message.
 The chart shows that approximately 6,300 voters were not persuaded (MOVED_A = 0), while around 3,700 voters showed movement after the message (MOVED_A = 1). This indicates that most voters remained unchanged, although a substantial portion responded to campaign messaging.
 The distribution suggests a moderate class imbalance, where non-moved voters appear more frequently than moved voters. This is important because imbalance can influence classification model performance and should be considered during later modeling stages.
- 
-Figure 2: Age by Voter Movement
+
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em>Figure 2.  Age by Voter Movement</em>
+</p>
+
 Figure 2 compares the age distribution of voters based on whether they changed their attitude after receiving a campaign message.
 The median age for both groups is around 50 years old, indicating that middle-aged voters make up a large portion of the dataset regardless of persuasion outcome. The spread of ages is also similar across both groups, with voter ages ranging from approximately 18 to 100 years old.
 The boxplot suggests that age alone may not strongly distinguish between voters who were persuaded and those who were not. However, the group of moved voters (MOVED_A = 1) shows slightly greater variation in age distribution, indicating that persuasion responses may occur across a wider age range.
- 
-Figure 3: Income by Voter Movement
+
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em>Figure 3: Income by Voter Movement</em>
+</p>
 Figure 3 compares median household income for voters who did not move after the message (MOVED_A = 0) and voters who did move after the message (MOVED_A = 1).
 Most voters in both groups are concentrated around the $50,000–$90,000 income range. The median income for both groups appears close, around $60,000, meaning income alone does not strongly separate moved and non-moved voters.
 The chart also shows high-income outliers in both groups. For MOVED_A = 0, there are outliers around $175,000–$200,000. For MOVED_A = 1, there is an outlier around $175,000. These outliers represent voters from much higher-income neighborhoods compared to the majority of the dataset. They were kept because they appear to be real values, not missing data or errors.
 
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em>Figure 4: Party Registration Distribution</em>
+</p>
  
-Figure 4: Party Registration Distribution
+
 Figure 4 shows the distribution of voter party registration in the dataset across Democrats, Independents, and Republicans.
 The dataset contains the largest number of Democratic voters, with approximately 4,700 records. Republican voters are the second largest group with around 2,800 records, while Independent voters represent the smallest group with approximately 2,200 records
 The chart suggests that the dataset is politically diverse but somewhat dominated by Democratic voters. This is important because party affiliation was identified as one of the strongest predictors of voter movement and persuasion behavior. Differences in party registration may influence how voters respond to campaign messages and political outreach strategies.
- 
-Figure 5: Voting in 2012 vs Persuasion
+
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em>Figure 5: Voting in 2012 vs Persuasion</em>
+</p>
+
 Figure 5 compares voter movement outcomes with whether individuals voted in the 2012 election.
 Among voters who did not vote in 2012 (VPR_12 = 0), a larger proportion remained unchanged after the campaign message (MOVED_A = 0). In contrast, voters who participated in the 2012 election (VPR_12 = 1) showed a higher proportion of movement after receiving the message (MOVED_A = 1).
 The chart suggests that prior voting participation may be related to persuasion behavior. Politically active voters appear more likely to respond to campaign messaging compared to voters with lower political participation. This supports earlier findings that political engagement variables are important predictors for understanding voter persuasion.
- 
-Figure 6. Average Upscale Buying Score by Persuasion
+
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em>Figure 6. Average Upscale Buying Score by Persuasion</em>
+</p>
+
 
 Figure 6 compares the average upscale buying index between voters who were persuaded by the campaign message and those who were not.
 The chart shows that voters who moved after the message have a slightly higher average upscale buying score compared to voters who did not move. However, the overall values for both groups are very low, indicating that upscale buying behavior is not strongly associated with persuasion outcomes.
 This finding suggests that consumer lifestyle variables, such as upscale purchasing behavior, may provide only limited value for predicting voter movement when compared to stronger political and voting-related predictors.
- 
-Figure 7. Effect of Message A on Voter Movement
+
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em>Figure 7. Effect of Message A on Voter Movement</em>
+</p>
+
+
 
 Figure 7 compares voter movement outcomes based on whether voters received Message A during the campaign experiment
 Among voters who did not receive Message A (MESSAGE_A = 0), a larger number remained unchanged after the campaign communication. However, among voters who received Message A (MESSAGE_A = 1), the number of persuaded voters (MOVED_A = 1) becomes relatively higher compared to non-moved voters.
 This pattern suggests that Message A may have had a positive influence on voter persuasion. Voters exposed to the message appear more likely to change their attitudes compared to those who did not receive it. The results indicate that campaign messaging strategies can play an important role in influencing voter behavior and may be useful predictors in later classification modeling.
 
- 
-Figure 8. Gender (Female) vs Persuasion
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em>Figure 8. Gender (Female) vs Persuasion</em>
+</p>
+
+
 Figure 8 compares voter persuasion outcomes based on gender using the variable GENDER_F, where 1 represents female voters and 0 represents non-female voters.
 Among non-female voters (GENDER_F = 0), approximately 70% remained unchanged after the campaign message, while about 55% showed movement. Among female voters (GENDER_F = 1), the proportion of persuaded voters increases to around 45%, compared to about 28% who did not move.
 These results suggest that female voters may be slightly more responsive to campaign messaging compared to non-female voters. Although the difference is moderate, gender appears to provide some useful information for understanding persuasion behavior.
- 
-Figure 9. Parents vs Persuasion
+
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em>Figure 9. Parents vs Persuasion</em>
+</p>
+
+
 Figure 9 compares persuasion outcomes based on whether voters have children in the household.
 Voters without children (Has Kids = 0) make up the larger share of persuaded voters, accounting for approximately 62% of the moved group. In comparison, voters with children (Has Kids = 1) represent around 38% of voters who were persuaded after receiving campaign messaging.
 These results suggest that voters without children may have been somewhat more responsive to campaign messages than voters with children. However, the difference is moderate, indicating that household structure may provide supporting information but is likely less important than direct political or voting-related predictors.
   
- 
-Figure 10. Household Political Composition vs Persuasion
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em>Figure 10. Household Political Composition vs Persuasion</em>
+</p>
+
 
 Figure 10 compares the number of registered Democrats, Republicans, and Independents in a household across voter persuasion outcomes (MOVED_A).
 The results show that voters who were persuaded (MOVED_A = 1) tend to have slightly more Democratic household members compared to non-moved voters. In contrast, non-moved voters generally have a higher number of registered Republicans in the household, suggesting that stronger Republican household representation may be associated with lower persuasion likelihood.
@@ -115,16 +160,25 @@ The boxplots also contain several outliers, with some households having as many 
 Overall, the figure suggests that household political background may influence persuasion behavior, especially for Democratic and Republican households.
 
   
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em> Figure 11. Neighborhood Demographic Composition vs Persuasion</em>
+</p>
   
- 
-Figure 11. Neighborhood Demographic Composition vs Persuasion
+
 Figure 11 compares neighborhood demographic percentages across voters who did not move (MOVED_A = 0) and voters who moved (MOVED_A = 1).
 For White population percentage, the median is slightly higher for non-moved voters, around 65–67%, compared to about 62–64% for moved voters. African American percentage is slightly higher among moved voters, with a median around 18–20%, compared to about 15–17% for non-moved voters.
 Hispanic, Asian, and Multiracial percentages are generally low for both groups. Hispanic median values are around 2–4%, Asian around 3–4%, and Multiracial around 1–2%. The plots also show outliers, including Hispanic values near 35–40%, Asian values around 12–16%, and Multiracial values around 6–8%.
 Overall, the data suggests that neighborhood demographic differences exist, but they are moderate rather than very large.
   
-     
-Figure 12. Neighborhood Commuting Patterns vs Persuasion
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em> Figure 12. Neighborhood Commuting Patterns vs Persuasion</em>
+</p>
+  
+
 
 Figure 12 compares several neighborhood commuting characteristics across voter persuasion outcomes (MOVED_A), including commuting by car, carpooling, public transit, walking, and commute duration.
 The results show that commuting by car is the dominant transportation method for both groups, with median values around 75–85%. Non-moved voters show slightly higher car commuting percentages compared to moved voters. In contrast, persuaded voters (MOVED_A = 1) tend to have somewhat higher percentages for carpooling, public transit use, and walking.
@@ -168,6 +222,7 @@ The dataset was divided using a stratified 70–30 train-test split to maintain 
 For Logistic Regression and the Decision Tree, models were trained directly on the training dataset and evaluated on the testing dataset using classification performance measures. For kNN, the optimal value of k was selected using 10-fold cross-validation on the training data before final testing. Cross-validation helped identify the best neighborhood size while reducing the risk of overfitting.
 Model performance was evaluated using accuracy, sensitivity, specificity, and ROC–AUC. These measures helped assess both overall predictive performance and the ability of the models to correctly identify persuaded voters.
 The validation and testing results were generally consistent across the models, suggesting that the models were properly trained and generalized reasonably well to unseen voter data. Overall, the models were appropriately fitted, validated, and tested, allowing reliable comparison of different approaches for campaign targeting analysis.
+
 # Reporting Model Performance
 Model performance was evaluated using multiple classification metrics rather than relying only on accuracy. Since the campaign’s goal is to identify persuadable voters while minimizing wasted outreach, measures such as sensitivity, specificity, and ROC–AUC were important for assessing model quality.
 As shown in Figure 13, the Logistic Regression model achieved a test accuracy of approximately 78.8%, meaning the model correctly classified most voters in the testing dataset. The model achieved a sensitivity of 70.1%, indicating that it correctly identified about 70% of persuaded voters (MOVED_A = 1). The specificity was 84.0%, showing that the model performed better at correctly identifying voters who were unlikely to change their opinions.
@@ -180,8 +235,12 @@ while incorrectly classifying:
 •	302 non-persuaded voters as persuaded
 Overall, the Logistic Regression model demonstrated reliable predictive performance and provided a good balance between identifying persuadable voters and avoiding unnecessary campaign outreach.
  
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em> Figure 13: Confusion Matrix and ROC curve for Logistic Regression</em>
+</p>
 
-Figure 13: Confusion Matrix and ROC curve for Logistic Regression
 Figure 14 shows the final Decision Tree model and its classification performance on the testing dataset.
 The Decision Tree achieved a test accuracy of approximately 83.4%, which was higher than the Logistic Regression model. The model also achieved a sensitivity of 79.7%, meaning it correctly identified nearly 80% of persuaded voters (MOVED_A = 1). The specificity was 85.6%, indicating strong performance in identifying voters who were unlikely to change their opinions.
 The ROC–AUC value for the Decision Tree model was approximately 0.833, suggesting good overall discrimination between persuaded and non-persuaded voters.
@@ -193,8 +252,13 @@ while incorrectly classifying:
 •	271 non-persuaded voters as persuaded
 The decision tree visualization also shows how the model used principal component splits (PC1 and PC2) to separate voters into different persuasion groups. Overall, the Decision Tree provided strong predictive performance while also offering interpretable rule-based classification useful for campaign targeting decisions.
   
+<p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em> Figure 14: Decision tree and Confusion Matrix of Decision Tree</em>
+</p>
 
-Figure 14: Decision tree and Confusion Matrix of Decision Tree
+
 
 Figure 15 presents the performance of the k-Nearest Neighbors (kNN) model on the testing dataset, along with its ROC curve.
 Among the three classification models, the kNN model achieved the strongest overall performance. The test accuracy reached approximately 85.7%, which was the highest accuracy obtained in the analysis. The model achieved a sensitivity of 80.5%, meaning it correctly identified over 80% of persuaded voters (MOVED_A = 1). The specificity was 88.7%, indicating very strong performance in correctly identifying voters who were unlikely to change their opinions.
@@ -207,9 +271,13 @@ while incorrectly classifying:
 •	213 non-persuaded voters as persuaded
 Overall, the kNN model provided the best balance between identifying persuadable voters and minimizing unnecessary outreach, making it the strongest model for campaign targeting decisions in this analysis.
 
-  
+ <p align="center">
+  <img src="image/figure%201.png" alt="Exploratory data analysis" width="740">
+  <br>
+  <em> Figure 15: ROC curve and Confusion matrix for KNN</em>
+</p> 
 
-Figure 15: ROC curve and Confusion matrix for KNN
+
 Comparing the three models shows that all models performed reasonably well in predicting voter persuasion outcomes. However, the k-Nearest Neighbors (kNN) model consistently achieved the strongest overall performance across all evaluation measures. It produced the highest test accuracy (85.7%), sensitivity (80.5%), specificity (88.7%), and ROC–AUC (0.929).
 These results indicate that the kNN model was the most effective at correctly identifying both persuadable and non-persuadable voters. In particular, its higher sensitivity means it was better at identifying voters likely to be influenced by campaign messaging, while its strong specificity helped reduce unnecessary outreach toward voters unlikely to change their opinions.
 Overall, the comparison suggests that the kNN model provides the best predictive performance and is the most suitable approach for supporting efficient and data-driven campaign targeting decisions.
