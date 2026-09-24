@@ -53,7 +53,10 @@ These zero values were retained because they provide meaningful information abou
 # Exploratory Data Analysis
 
 
-Figure 1: Distribution of Voter Movement (MOVED_A)
+![Figure 1: Exploratory Data Analysis](image/figure%201.png)
+
+*Figure 1: Distribution of Voter Movement (MOVED_A)*
+
 Figure 1 presents the distribution of the MOVED_A variable in the voter persuasion dataset. The variable indicates whether a voter changed their attitude after exposure to a campaign message.
 The chart shows that approximately 6,300 voters were not persuaded (MOVED_A = 0), while around 3,700 voters showed movement after the message (MOVED_A = 1). This indicates that most voters remained unchanged, although a substantial portion responded to campaign messaging.
 The distribution suggests a moderate class imbalance, where non-moved voters appear more frequently than moved voters. This is important because imbalance can influence classification model performance and should be considered during later modeling stages.
